@@ -18,8 +18,12 @@ app.get('/', (req, res) => {
 
 // Ruta de la API solicitada por freeCodeCamp
 app.get('/api/whoami', (req, res) => {
-  const ip = req.ip; // ✅ Express maneja correctamente IPv4 e IPv6
-  const language = req.headers['accept-language']; // ✅ cadena completa
+  // Detectar dirección IP válida
+  const ip = req.headers['x-forwarded-for']
+    ? req.headers['x-forwarded-for'].split(',')[0]
+    : req.ip;
+
+  const language = req.headers['accept-language'];
   const software = req.headers['user-agent'];
 
   res.json({
@@ -28,7 +32,6 @@ app.get('/api/whoami', (req, res) => {
     software: software || ''
   });
 });
-
 // Puerto dinámico
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
