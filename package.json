@@ -1,0 +1,15 @@
+{
+  "name": "analizador-encabezados-solicitud",
+  "version": "1.0.0",
+  "description": "Proyecto freeCodeCamp - Microservicio de análisis de encabezados de solicitud",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
